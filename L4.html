@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas绘制饼形图</title>
+		<style type="text/css">
+			#canvas{
+			display: block;
+			width: 400px;
+			height: 400px;
+			margin: 50px auto;
+			border: 1px red solid;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800"></canvas>
+		<script type="text/javascript">
+			var paper=document.getElementById("canvas");
+			var pen=paper.getContext("2d");
+			pen.arc(400,400,300,0,Math.PI/4,false);
+			pen.lineTo(400,400,1,1);
+			pen.fillStyle="yellowgreen";
+			pen.fill();
+			pen.arc(400,400,300,Math.PI*2/3,Math.PI,true);
+			pen.lineTo(400,400,1,1);
+			pen.fillStyle="lightblue";
+			pen.fill();
+			pen.beginPath();
+			pen.arc(400,400,300,0,Math.PI/2,true);
+			pen.lineTo(400,400,1,1);
+			pen.fillStyle="lightcoral";
+			pen.fill();
+			pen.beginPath();
+			pen.arc(400,400,300,Math.PI,Math.PI/8,false);
+			pen.lineTo(400,400,1,1);
+			pen.fillStyle="lightseagreen";
+			pen.fill();
+		</script>
+	</body>
+</html>
