@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas {
+				width: 400px;
+				height: 400px;
+				border: solid 1px red;
+				display: block;
+				margin: 50px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="800" height="800"></canvas>
+		<script type="text/javascript">
+			var paper = document.getElementById("canvas");
+			var pen = paper.getContext("2d");
+			pen.translate(400,400);
+			var time=new Date();
+			var y=time.getFullYear();
+			var M=time.getMonth()+1;
+			var D=time.getDate();
+			var h=time.getHours();
+			var m=time.getMinutes();
+			var s=time.getSeconds();
+			round();
+			setTime(h,m,s);
+			setInterval(function(){
+				var time=new Date();
+				var h=time.getHours();
+				var m=time.getMinutes();
+				var s=time.getSeconds();
+				pen.clearRect(-400,-400,800,800);
+				round();
+				setTime(h,m,s);
+			},1000)
+			
+			//表盘
+			function round(){
+				
+				pen.beginPath();
+				pen.arc(0,0,380,0,Math.PI*2);
+				pen.strokeStyle="black";
+				pen.lineWidth=10;
+				pen.font = "bolder 40px 黑体 ";
+				pen.textAlign = "center";
+				pen.textBaseline = "middle";
+				pen.stroke();
+				
+				//刻度
+				for(var i=0;i<60;i++){
+					var x=340*Math.cos(Math.PI/180*i*6);
+					var y=340*Math.sin(Math.PI/180*i*6);
+					
+					pen.beginPath();
+					if(i%5==0){
+						var n = (i/5)%12;
+						n=n+3;
+						if(n>12){
+							n=n-12;
+						}
+						pen.fillText(n,x,y);
+					}else{
+						pen.arc(x,y,3,0,Math.PI*2);
+						pen.fillStyle="black";
+					}
+					pen.fill();
+					pen.closePath();
+					pen.restore();
+				}
+			}
+		
+			//指针
+			function setTime(h,m,s){
+				pen.lineCap="round";
+				//时针
+				pen.save();
+					pen.rotate(Math.PI/180*(h*30+30/60*m));
+					pen.beginPath();
+					pen.lineTo(0,40);
+					pen.lineTo(0,-160);
+					pen.strokeStyle="black";
+					pen.lineWidth=15;
+					pen.stroke();
+					pen.closePath();
+				pen.restore();
+				//分针
+				pen.save();
+					pen.rotate(Math.PI/180*(m*6+6/60*s));
+					pen.beginPath();
+					pen.lineTo(0,60);
+					pen.lineTo(0,-260);
+					pen.strokeStyle="black";
+					pen.lineWidth=10;
+					pen.stroke();
+					pen.closePath();
+				pen.restore();
+				//秒针
+				pen.save();
+					pen.rotate(Math.PI/180*s*6);
+					pen.beginPath();
+					pen.lineTo(0,80);
+					pen.lineTo(0,-290);
+					pen.strokeStyle="red";
+					pen.lineWidth=5;
+					pen.stroke();
+					pen.closePath();
+				pen.restore();
+				//圆心
+				pen.save();
+					pen.beginPath();
+					pen.fillStyle="blue";
+					pen.arc(0,0,28,0,Math.PI*2);
+					pen.fill();
+					pen.closePath();
+				pen.restore();
+				
+				pen.fillStyle ="black";
+				pen.fillText(y+"-"+M+"-"+D,0,200);
+			}
+		</script>
+	</body>
+
+</html>
