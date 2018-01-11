@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				width: 507px;
+				height: 350px;
+				border: 1px red solid;
+				margin: 50px auto;
+				position: relative;
+				background-image: url(img/bg_1.png);
+				background-size: 507px 215px;
+				background-repeat: repeat-x;
+				-webkit-animation: bg 6s linear infinite;
+			}
+			.bg{
+				width: 507px;
+				height: 231px;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background-image: url(img/bg_2.png);
+				background-size: 507px 231px;
+				background-repeat: repeat-x;
+				bottom: 57px;
+				-webkit-animation: bg 2s linear infinite;
+			}
+			.level{
+				width: 507px;
+				height: 57px;
+				position: absolute;
+				bottom: 0;
+			}
+			.people{
+				width: 123px;
+				height: 105px;
+				background-image: url(img/1.png);
+				background-repeat: no-repeat;
+				position: absolute;
+				bottom: 57px;
+				left: 50%;
+				margin-left: -62px;
+				-webkit-animation: run 1s linear infinite;
+			}
+			
+			@-webkit-keyframes bg{
+				0%{
+					background-position-x: 0;
+				}
+				100%{
+					background-position-x:-507px;
+				}
+			}
+			
+			@-webkit-keyframes run{
+				0%{
+					background-image: url(img/1.png);
+				}
+				8%{
+					background-image: url(img/2.png);
+				}
+				16%{
+					background-image: url(img/3.png);
+				}
+				24%{
+					background-image: url(img/4.png);
+				}
+				32%{
+					background-image: url(img/5.png);
+				}
+				40%{
+					background-image: url(img/6.png);
+				}
+				48%{
+					background-image: url(img/7.png);
+				}
+				56%{
+					background-image: url(img/8.png);
+				}
+				64%{
+					background-image: url(img/9.png);
+				}
+				72%{
+					background-image: url(img/10.png);
+				}
+				81%{
+					background-image: url(img/11.png);
+				}
+				
+				100%{
+					background-image: url(img/12.png);
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="bg"></div>
+			<div class="people"></div>
+			<img class="level" src="img/bg.png"/>
+		</div>
+	</body>
+</html>

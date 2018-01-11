@@ -7,3 +7,7 @@ L5:
 
 L6:
 <a href="https://mumulee-world.github.io/homework/L6.html">拼立方体</a>
+
+L7:
+<a href="https://mumulee-world.github.io/homework/L7-1.html">天天跑酷</a> 
+<a href="https://mumulee-world.github.io/homework/L7-2.html">runningMan</a>   
